@@ -14,7 +14,7 @@ public class MotherJavaTester {
         for (long eingabe = highestCombination; eingabe >= lowestCombination; eingabe--) {
             String eingabeStr = Long.toString(eingabe);
             ++count;
-            if (mother.checkLength(eingabeStr)) {
+            if (mother.checkFormat(eingabeStr)) {
                 // only do extra work, if the first condition is passed
                 String reverse = mother.reverse(eingabe+"");
                 if (mother.isSquare(Long.parseLong(reverse))) {

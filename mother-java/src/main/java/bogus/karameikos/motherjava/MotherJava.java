@@ -1,19 +1,24 @@
 package bogus.karameikos.motherjava;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class MotherJava {
-    public boolean checkLength(String eingabe) {
-        if(eingabe == null) return false;
-
-        if(eingabe.matches("^[0-9]*$") && (eingabe.length()==9)) {
-
+    // 9-different-digits-code
+    public boolean checkFormat(String eingabe) {
+        boolean result = false;
+        if (eingabe != null && eingabe.length() == 9) {
+            Set<Character> set = new HashSet<>();
             for (char c : eingabe.toCharArray()) {
-                if (eingabe.indexOf(c) != eingabe.lastIndexOf(c)) return false;
+                if ('0' <= c && c <= '9') {
+                    set.add(c);
+                }
             }
-
-            return true;
+            if (set.size() == 9) { // 9 different digits
+                result = true;
+            }
         }
-
-        return false;
+        return result;
     }
 
 
@@ -23,10 +28,11 @@ public class MotherJava {
     }
 
     public String reverse(String eingabe) {
-        StringBuilder builder = new StringBuilder();
-        for (int i = eingabe.length() - 1; i >= 0; i--) {
-            builder.append(eingabe.charAt(i));
+        char[] chars = eingabe.toCharArray();
+        char[] reverse = new char[chars.length];
+        for (int i = 0; i < chars.length; i++) {
+            reverse[(reverse.length - 1) - i] = chars[i];
         }
-        return builder.toString();
+        return new String(reverse);
     }
 }

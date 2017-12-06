@@ -11,7 +11,7 @@ public class MotherJavaTest {
         // given
         String eingabe = null;
         // when
-        boolean result = cut.checkLength(eingabe);
+        boolean result = cut.checkFormat(eingabe);
         // then
         Assert.assertFalse("Eingabe ist kein Code.", result);
     }
@@ -21,7 +21,7 @@ public class MotherJavaTest {
         // given
         String eingabe = "123456789";
         // when
-        boolean result = cut.checkLength(eingabe);
+        boolean result = cut.checkFormat(eingabe);
         // then
         Assert.assertTrue("Eingabe muss gut sein.", result);
     }
@@ -31,9 +31,29 @@ public class MotherJavaTest {
         // given
         String eingabe = "123455789";
         // when
-        boolean result = cut.checkLength(eingabe);
+        boolean result = cut.checkFormat(eingabe);
         // then
         Assert.assertFalse("Eingabe hat wiederhoung.", result);
+    }
+
+    @Test
+    public void testCodeIst9ZifferLangTooShort() {
+        // given
+        String eingabe = "123459";
+        // when
+        boolean result = cut.checkFormat(eingabe);
+        // then
+        Assert.assertFalse("Eingabe ist zu kurz.", result);
+    }
+
+    @Test
+    public void testCodeIst9ZifferKleinsteMoeglicheZahl() {
+        // given
+        String eingabe = "012345678";
+        // when
+        boolean result = cut.checkFormat(eingabe);
+        // then
+        Assert.assertTrue("012345678 muss passen.", result);
     }
 
     @Test
@@ -81,7 +101,7 @@ public class MotherJavaTest {
         // given
         String eingabe = "12b456f89";
         // when
-        boolean result = cut.checkLength(eingabe);
+        boolean result = cut.checkFormat(eingabe);
         // then
         Assert.assertFalse("Eingabe hat Buchstaben.", result);
     }
