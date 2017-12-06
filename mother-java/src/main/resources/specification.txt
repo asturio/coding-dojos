@@ -1,0 +1,6 @@
+# Mother Java
+
+Mother Java is Locked down. The code to unlock mother java much meet these criteria:
+- It is a 9-digit number composed of different digits
+- Read from right to left, the number must be a square number
+- It is the largest number meeting the above 2 criteria
