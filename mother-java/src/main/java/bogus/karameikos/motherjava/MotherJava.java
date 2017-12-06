@@ -8,14 +8,13 @@ public class MotherJava {
     public boolean checkFormat(String eingabe) {
         boolean result = false;
         if (eingabe != null && eingabe.length() == 9) {
-            Set<Character> set = new HashSet<>();
+            result = true;
             for (char c : eingabe.toCharArray()) {
-                if ('0' <= c && c <= '9') {
-                    set.add(c);
+                if ((c < '0' || '9' < c)
+                        || (eingabe.indexOf(c) != eingabe.lastIndexOf(c))) {
+                    result = false;
+                    break;
                 }
-            }
-            if (set.size() == 9) { // 9 different digits
-                result = true;
             }
         }
         return result;
