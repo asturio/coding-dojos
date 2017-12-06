@@ -1,11 +1,8 @@
 package bogus.karameikos.motherjava;
 
-import java.util.HashSet;
-import java.util.Set;
-
-public class MotherJava {
+class MotherJava {
     // 9-different-digits-code
-    public boolean checkFormat(String eingabe) {
+    boolean checkFormat(String eingabe) {
         boolean result = false;
         if (eingabe != null && eingabe.length() == 9) {
             result = true;
@@ -21,12 +18,12 @@ public class MotherJava {
     }
 
 
-    public boolean isSquare(long eingabe) {
+    boolean isSquare(long eingabe) {
         double root = Math.sqrt(eingabe);
         return (Math.floor(root) == root);
     }
 
-    public String reverse(String eingabe) {
+    String reverse(String eingabe) {
         char[] chars = eingabe.toCharArray();
         char[] reverse = new char[chars.length];
         for (int i = 0; i < chars.length; i++) {
